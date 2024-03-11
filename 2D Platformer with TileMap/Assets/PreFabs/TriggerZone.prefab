@@ -119,8 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574448309510517993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e61c3b7036d3d94dbde18727c2da6c8, type: 3}
+  m_Script: {fileID: 11500000, guid: dafd2e16854a1c74388b7bc61c775e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: {fileID: 0}
-  textToDisplay: You Win!
+  thisTriggered: {fileID: 8300000, guid: b4706cf69ea826f41ba2aa1f050c4c08, type: 3}
