@@ -70,11 +70,11 @@ public class PlatformPlayerController : MonoBehaviour
         //Optionally, you can add animations or other behavior here based on player state
         if(horizontalInput > 0)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f); // Facing right
+            transform.rotation = Quaternion.Euler(0,0,0); // Facing right
         }
         else if (horizontalInput < 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f); // Facing Left
+            transform.rotation=  Quaternion.Euler(0,180,0); // Facing Left
         }
        
     }
