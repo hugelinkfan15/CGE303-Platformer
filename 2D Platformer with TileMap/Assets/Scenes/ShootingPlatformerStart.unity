@@ -658,9 +658,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   healthBar: {fileID: 1919276391}
-  knockbackForce: 5
+  knockbackForce: 7
   playerDeathEffect: {fileID: 0}
-  hitRecoveryTime: 0.2
+  hitRecoveryTime: 0.3
 --- !u!4 &709085842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 875883143277006402, guid: a0d7d0dde4658304a9888937c7bdcc1d, type: 3}

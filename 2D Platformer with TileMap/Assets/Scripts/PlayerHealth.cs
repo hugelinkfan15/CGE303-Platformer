@@ -14,14 +14,20 @@ public class PlayerHealth : MonoBehaviour
     public float hitRecoveryTime = 0.2f;
 
     private Rigidbody2D rb;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         if (rb == null)
         {
             Debug.LogError("Rigidbody2D not found on player");
+        }
+        if (animator == null)
+        {
+            Debug.LogError("Animator not found on player");
         }
 
         healthBar.SetMaxValue(health);
@@ -60,6 +66,8 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(hitRecoveryTime);
 
         hitRecently = false;
+
+        animator.SetBool("hit", false);
     }
 
     public void TakeDamage(int damage)
@@ -71,6 +79,12 @@ public class PlayerHealth : MonoBehaviour
         if(health<=0)
         {
             Die();
+        }
+        else
+        {
+            //playerAudio.PlayOneShot(playerhitSound);
+
+            animator.SetBool("hit", true);
         }
     }
 
