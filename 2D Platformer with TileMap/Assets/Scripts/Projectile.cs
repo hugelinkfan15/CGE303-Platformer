@@ -10,6 +10,8 @@ public class Projectile : MonoBehaviour
 
     public int damage = 20;
 
+    public GameObject impactEffect;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +30,8 @@ public class Projectile : MonoBehaviour
 
         if(hitInfo.gameObject.tag !=  "Player")
         {
+            Instantiate(impactEffect,transform.position, Quaternion.identity);
+
             Destroy(gameObject);
         }
     }

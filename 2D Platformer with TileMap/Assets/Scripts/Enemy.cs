@@ -43,6 +43,9 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(deathEffect,transform.position, Quaternion.identity);
 
+        ScoreManager.won = true;
+        ScoreManager.gameOver = true;
+
         Destroy(gameObject);
     }
 

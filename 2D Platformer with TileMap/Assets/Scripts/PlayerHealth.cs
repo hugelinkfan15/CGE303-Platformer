@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject playerDeathEffect;
     public static bool hitRecently = false;
     public float hitRecoveryTime = 0.2f;
+    public AudioClip hitSound;
+    public AudioClip deathSFX;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -49,16 +51,17 @@ public class PlayerHealth : MonoBehaviour
         }
 
         hitRecently = true;
-        if(!ScoreManager.gameOver)
-        StartCoroutine(RecoverFromHit());
+        if (!ScoreManager.gameOver)
+            StartCoroutine(RecoverFromHit());
 
-        Vector2 direction = transform.position - enemyPosition;
+            Vector2 direction = transform.position - enemyPosition;
 
-        direction.Normalize();
+            direction.Normalize();
 
-        direction.y = direction.y * 0.5f + 0.5f;
+            direction.y = direction.y * 0.5f + 0.5f;
 
-        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+            rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        
     }
 
     IEnumerator RecoverFromHit()
@@ -82,7 +85,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            //playerAudio.PlayOneShot(playerhitSound);
+            SoundFXManager.instance.PlaySoundFXCLip(hitSound,rb.transform,1f);
 
             animator.SetBool("hit", true);
         }
@@ -91,6 +94,10 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         ScoreManager.gameOver = true;
+
+        SoundFXManager.instance.PlaySoundFXCLip(deathSFX, rb.transform, 1f);
+
+        GameObject deathEffect = Instantiate(playerDeathEffect,transform.position,Quaternion.identity);
 
         gameObject.SetActive(false);
     }
